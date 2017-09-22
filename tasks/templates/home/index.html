@@ -26,12 +26,17 @@
                         <div class="tasks-group-item-container" id="cards-for-{{ group.id }}">
                             {% for card in group.card_set.all %}
                                 <div class="tasks-group-item" id="card_{{ card.id }}">
-                                    {{ card.content }}
+                                    <div class="tasks-group-item-content">
+                                        {{ card.content }}
+                                        {% if card.has_img %}
+                                            <img src="{{ card.image }}">
+                                        {% endif %}
+                                    </div>
                                     <div class="links">
                                         <ul>
                                             <li><a href="#" onclick="deleteCard({{ card.id }});">Delete</a></li>
                                             {% if not card.checked %}
-                                                <li><a href="#" onclick="checkCard({{ card.id }});">Check</a></li>
+                                                <li><a href="#" id="card_{{ card.id }}_check_link" onclick="checkCard({{ card.id }});">Check</a></li>
                                             {% endif %}
                                         </ul>
                                     </div>

@@ -12,9 +12,11 @@ class Group(models.Model):
 
 
 class Card(models.Model):
-	group = models.ForeignKey(Group)
+	group = models.ForeignKey(Group, on_delete=models.CASCADE)
 	content = models.TextField(max_length=255)
-	checked = models.BooleanField(default=False);
+	image = models.TextField(max_length=255, default='')
+	has_img = models.BooleanField(default=False)
+	checked = models.BooleanField(default=False)
 	createdAt = models.DateTimeField(auto_now_add=True)
 	updatedAt = models.DateTimeField(auto_now=True)
 

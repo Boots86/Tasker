@@ -26,11 +26,17 @@ body{
 }
 .tasks-group .tasks-group-item{
     background: #fff;
-    padding: 10px;
     box-sizing: border-box;
     border-radius: 4px;
     font-size: 13px;
     margin-bottom: 10px;
+}
+.tasks-group .tasks-group-item .tasks-group-item-content{
+    padding: 10px 10px 3px 10px;
+}
+.tasks-group .tasks-group-item .tasks-group-item-content img{
+    border-radius: 4px;
+    width: 100%;
 }
 .tasks-group .tasks-group-item-container{
     margin-bottom: 10px;
@@ -39,7 +45,7 @@ body{
     margin-bottom: 0px;
 }
 .tasks-group .tasks-group-item .links{
-    margin-top: 5px;
+    padding: 5px 10px;
 }
 .tasks-group .tasks-group-item .links ul{
     margin: 0px;
@@ -58,8 +64,6 @@ body{
     font-weight: 300;
     color: #888;
     font-size: 12px;
-    margin: 5px 0px 0px 0px;
-    border-radius: 3px;
 }
 .tasks-group .tasks-group-item .info ul{
     margin: 0px;
@@ -82,15 +86,13 @@ body{
     resize: none;
 }
 .tasks-group .tasks-group-item .check{
-    background: green;
+    background: #bbb;
     padding: 3px 6px;
     font-weight: 300;
     color: #888;
     font-size: 12px;
-    margin: 5px 0px 0px 0px;
-    border-radius: 3px;
-    display: none;
+    border-radius: 0px 0px 3px 3px;
 }
 .tasks-group .tasks-group-item .visible{
-    display: block;
+    background: green;
 }

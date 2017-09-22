@@ -71,6 +71,8 @@ function checkCard(id){
 		success: function(data){
 			var card_id = data;
 			document.getElementById('card_check_' + card_id).classList.add('visible');
+			var check_link = document.getElementById('card_' + card_id + '_check_link');
+			check_link.parentNode.removeChild(check_link);
 		},
 		error: function(err){
 			console.log(err);
@@ -86,7 +88,7 @@ function delGroup(id){
 		data: { group_id: id },
 		success: function(data){
 			var group_id = data;
-			group = document.getElementById('group_' + group_id);
+			var group = document.getElementById('group_' + group_id);
 			group.parentNode.removeChild(group);
 		},
 		error: function(err){

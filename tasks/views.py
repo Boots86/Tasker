@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 import json
+import requests
+import re
+from urlparse import urlparse
 
 from django.shortcuts import render
 from django.template.loader import render_to_string
@@ -46,10 +49,22 @@ class NewCard(View):
 	def post(self, request, *args, **kwargs):
 		card_form = CardForm(request.POST)
 		if card_form.is_valid():
+			card_has_img = False
+			image = ''
 			content = card_form.cleaned_data.get('content')
 			group_id = card_form.cleaned_data.get('group_id')
 			group = Group.objects.get(id=group_id)
-			card = Card(group=group, content=content)
+			image_url_test = re.search('(?P<url>https?://[^\s]+)', content)
+			img_formats = ['jpg', 'jpeg', 'png', 'bmp', 'gif']
+			if image_url_test:
+				image_url = image_url_test.group('url')
+				if urlparse(image_url).path.split('.')[1] in img_formats:
+					if requests.get(image_url).status_code == 200:
+						card_has_img = True
+						image = image_url
+						content = content.replace(image_url, '')
+
+			card = Card(group=group, content=content, has_img=card_has_img, image=image)
 			card.save()
 			html = render_to_string('home/card_partial.html', {
 				'card': card
