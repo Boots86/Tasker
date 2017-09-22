@@ -27,7 +27,7 @@
                             {% for card in group.card_set.all %}
                                 <div class="tasks-group-item" id="card_{{ card.id }}">
                                     <div class="tasks-group-item-content">
-                                        {{ card.content }}
+                                        {{ card.content | safe }}
                                         {% if card.has_img %}
                                             <img src="{{ card.image }}">
                                         {% endif %}
