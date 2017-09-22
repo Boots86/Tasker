@@ -1,0 +1,96 @@
+body{
+    background: #0079bf;
+}
+
+.clear {
+    clear: both;
+}
+
+.navbar{
+    border-radius: 0px;
+}
+
+.tasks-group{
+    background: #e0e0e0;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.tasks-group .tasks-group-header{
+    background: #bbb;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.tasks-group .tasks-group-item{
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.tasks-group .tasks-group-item-container{
+    margin-bottom: 10px;
+}
+.tasks-group .tasks-group-item:last-child{
+    margin-bottom: 0px;
+}
+.tasks-group .tasks-group-item .links{
+    margin-top: 5px;
+}
+.tasks-group .tasks-group-item .links ul{
+    margin: 0px;
+    padding: 0px;
+}
+.tasks-group .tasks-group-item .links ul li{
+    display: inline-block;
+    margin-right: 10px;
+}
+.tasks-group .tasks-group-item .links ul li:last-child{
+    margin-right: 0px;
+}
+.tasks-group .tasks-group-item .info{
+    background: #eee;
+    padding: 3px 6px;
+    font-weight: 300;
+    color: #888;
+    font-size: 12px;
+    margin: 5px 0px 0px 0px;
+    border-radius: 3px;
+}
+.tasks-group .tasks-group-item .info ul{
+    margin: 0px;
+    padding: 0px;
+}
+.tasks-group .tasks-group-item .info ul li{
+    display: inline-block;
+    margin-right: 8px;
+}
+.tasks-group .tasks-group-item .info ul li:last-child{
+    margin-right: 0px;
+}
+.tasks-group .tasks-group-links, .tasks-group-form{
+    background: #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.tasks-group .tasks-group-links, .tasks-group-form form textarea{
+    resize: none;
+}
+.tasks-group .tasks-group-item .check{
+    background: green;
+    padding: 3px 6px;
+    font-weight: 300;
+    color: #888;
+    font-size: 12px;
+    margin: 5px 0px 0px 0px;
+    border-radius: 3px;
+    display: none;
+}
+.tasks-group .tasks-group-item .visible{
+    display: block;
+}
