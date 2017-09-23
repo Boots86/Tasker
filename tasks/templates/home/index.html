@@ -15,56 +15,7 @@
     <div class="container-fluid">
         <div class="row" id="groups">
             {% for group in groups %}
-                <div class="col-sm-6 col-md-3" id="group_{{ group.id }}">
-                    <div class="tasks-group">
-                        <div class="tasks-group-header">
-                            <div class="clear"></div>
-                            <span class="pull-left">{{ group.title }}</span>
-                            <button class="btn btn-secondary btn-sm pull-right" onclick="delGroup({{ group.id }});"><i class="fa fa-trash"></i></button>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="tasks-group-item-container" id="cards-for-{{ group.id }}">
-                            {% for card in group.card_set.all %}
-                                <div class="tasks-group-item" id="card_{{ card.id }}">
-                                    <div class="tasks-group-item-content">
-                                        {{ card.content | safe }}
-                                        {% if card.has_img %}
-                                            <img src="{{ card.image }}">
-                                        {% endif %}
-                                    </div>
-                                    <div class="links">
-                                        <ul>
-                                            <li><a href="#" onclick="deleteCard({{ card.id }});">Delete</a></li>
-                                            {% if not card.checked %}
-                                                <li><a href="#" id="card_{{ card.id }}_check_link" onclick="checkCard({{ card.id }});">Check</a></li>
-                                            {% endif %}
-                                        </ul>
-                                    </div>
-                                    <div class="info">
-                                        <ul>
-                                            <li><i class="fa fa-clock-o"></i> {{ card.createdAt }}</li>
-                                        </ul>
-                                    </div>
-                                    {% if card.checked %}
-                                        <div class="check visible" id="card_check_{{ card.id }}"></div>
-                                    {% else %}
-                                        <div class="check" id="card_check_{{ card.id }}"></div>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="tasks-group-form">
-                            <form id="card_form_{{ group.id }}">
-                                <div class="form-group">
-                                    {{ card_form.content }}
-                                </div>
-                                <input type="hidden" name="{{ card_form.group_id.html_name }}" id="{{ card_form.group_id.auto_id }}" value="{{ group.id }}">
-                                {% csrf_token %}
-                                <button type="button" class="btn btn-primary" onclick="createCard({{ group.id }});">Add</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                {% include 'home/group_partial.html' %}
             {% endfor %}
         </div>
     </div>
