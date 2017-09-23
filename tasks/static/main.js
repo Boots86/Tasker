@@ -8,26 +8,11 @@ $(function(){
 			data: $('#group_form').serialize(),
 			success: function(data){
 				document.getElementById('groups').innerHTML += data;
+				document.getElementById('group_form').reset();
 			},
 			error: function(err){
 				console.log(err);
 			}
 		});
 	});
-
-	/*$('.card_form').on('submit', function(e){
-		e.preventDefault();
-		$.ajax({
-			url: '/new_card/',
-			method: 'post',
-			cache: false,
-			data: $('.card_form').serialize(),
-			success: function(data){
-				console.log(data);
-			},
-			error: function(err){
-				console.log(err);
-			}
-		});
-	});*/
 });

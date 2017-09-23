@@ -54,19 +54,19 @@ class NewCard(View):
 			content = card_form.cleaned_data.get('content')
 			group_id = card_form.cleaned_data.get('group_id')
 			group = Group.objects.get(id=group_id)
-			url_test = re.search('(?P<url>https?://[^\s]+)', content)
+			urls = re.findall('(?P<url>https?://[^\s]+)', content)
 			img_formats = ['jpg', 'jpeg', 'png', 'bmp', 'gif']
-			if url_test:
-				url = url_test.group('url')
-				try:
-					parsed_url = urlparse(url)
-					if parsed_url.path.split('.')[1] in img_formats:
-						if requests.get(url).status_code == 200:
-							card_has_img = True
-							image = url
-							content = content.replace(url, '')
-				except IndexError:
-					content = content.replace(url, '<a href="' + url + '">' + url + '</a>')
+			if urls:
+				for url in urls:
+					try:
+						parsed_url = urlparse(url)
+						if parsed_url.path.split('.')[1] in img_formats:
+							if requests.get(url).status_code == 200:
+								card_has_img = True
+								image = url
+								content = content.replace(url, '')
+					except IndexError:
+						content = content.replace(url, '<a href="' + url + '">' + url + '</a>')
 
 			card = Card(group=group, content=content, has_img=card_has_img, image=image)
 			card.save()
